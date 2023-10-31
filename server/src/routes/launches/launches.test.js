@@ -2,7 +2,9 @@ const request = require ('supertest');
 const app= require('../../app');  
 const {mongoConnect,mongoDisconnect} = require('../../services/mongo')
 
-beforeAll(async() => {
+describe('Launches API',() => {
+
+     beforeAll(async() => {
           await mongoConnect()
      });
 
@@ -78,3 +80,5 @@ beforeAll(async() => {
      afterAll(async() => {
           await mongoDisconnect()
      });
+
+})
