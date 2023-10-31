@@ -6,7 +6,7 @@ describe('Launches API',() => {
 
      beforeAll(async() => {
           await mongoConnect()
-     });
+     },30000);
 
      describe('TEST GET /launches', ()=>{
           test('It should response with 200 success', async ()=>{
@@ -15,7 +15,7 @@ describe('Launches API',() => {
                .expect('Content-type',/json/)
                .expect(200);
           },30000);
-     });
+     },30000);
      
      describe('TEST POST /launches', ()=>{
           const data ={
@@ -75,10 +75,10 @@ describe('Launches API',() => {
                     "error": "Invalid Date",
                });
           },30000); 
-     });
+     },30000);
 
      afterAll(async() => {
           await mongoDisconnect()
-     });
+     },30000);
 
 },60000)
