@@ -6,15 +6,27 @@ on:
     branches: [main]
 jobs:
   build: 
+    env:
+      CI : true
+      MONGO_URL: mongodb://localhost/nasa
+    stratergy:
+      matrix:
+        node-version: [18.x, 20.x]
+        mongodb-version: ['4.2', '4.4', '5.0', '6.0'] 
     runs-on: windows-latest
     steps:
-      - name: Checking Out
+      - name: Use Checkout from Github actions
         uses: actions/checkout@v2
-      - name: Setup Node
+      - name: Use Node.js version ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
-          node-version: '18'
+          node-version: ${{ matrix.node-version }}
+      - name: MongoDB in GitHub Actions
+        uses: supercharge/mongodb-github-action@1.10.0
+          with:
+            mongodb-version: ${{ matrix.mongodb-version }}
       - run: npm run install
       - run: npm run build --prefix client
+      - run: npm run test
   #deploy:
     #needs: build 
