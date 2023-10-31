@@ -13,7 +13,7 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
         mongodb-version: ['6.0'] 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Use Checkout from Github actions
         uses: actions/checkout@v2
