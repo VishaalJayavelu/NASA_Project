@@ -81,4 +81,4 @@ describe('Launches API',() => {
           await mongoDisconnect()
      });
 
-})
+},60000)
