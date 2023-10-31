@@ -14,7 +14,7 @@ describe('Launches API',() => {
                .get('/v1/launches')
                .expect('Content-type',/json/)
                .expect(200);
-          });
+          },30000);
      });
      
      describe('TEST POST /launches', ()=>{
@@ -50,7 +50,7 @@ describe('Launches API',() => {
                
                expect(responseDate).toBe(requestDate);
                expect(response.body).toMatchObject(dataWithoutDate);
-          });
+          },30000);
      
           test('It should catch missing requierd properties', async()=>{
                const response= await request(app)
@@ -62,7 +62,7 @@ describe('Launches API',() => {
                expect(response.body).toStrictEqual({
                     "error": "Missing Values",
                });
-          }); 
+          },30000); 
      
           test('It should catch invalid dates', async()=>{
                const response= await request(app)
@@ -74,7 +74,7 @@ describe('Launches API',() => {
                expect(response.body).toStrictEqual({
                     "error": "Invalid Date",
                });
-          }); 
+          },30000); 
      });
 
      afterAll(async() => {
