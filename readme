@@ -1,0 +1,3 @@
+docker build . -t vishaalj/naishasa-project
+
+docker run -it -p 8000:8000 vishaalj/nasa-project
